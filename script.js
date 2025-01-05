@@ -9,7 +9,7 @@ canvas.height = 600;
 const centerX = canvas.width / 2;
 const centerY = canvas.height / 2;
 const outerRadius = 270;
-const innerRadius = 75.5; // Markaziy aylana radiusi
+const innerRadius = 90; // Markaziy aylana radiusi
 
 // Bo'laklar va ularning ma'lumotlari
 const sections = [
@@ -41,6 +41,16 @@ sections.forEach((section, index) => {
     icon.src = section.icon;
     icons[index] = icon;
 });
+
+// Logoni yuklash boshqaruvi
+const logo = new Image();
+logo.src = "./icons/logo.svg"; // Logoning havolasi
+let isLogoLoaded = false;
+
+// Logoning yuklanganligini kuzatish
+logo.onload = () => {
+    isLogoLoaded = true;
+};
 
 // Bo'laklarni chizish
 function drawSlices() {
@@ -92,23 +102,19 @@ function drawSlices() {
 
 // Markazni chizish
 function drawCenter() {
-    // Markazni chizish
     ctx.beginPath();
     ctx.arc(centerX, centerY, innerRadius, 0, 2 * Math.PI);
-    ctx.fillStyle = "rgba(255, 255, 255, 1)"; // Oq fon rangi
+    ctx.fillStyle = "rgba(255, 255, 255, 1)";
     ctx.fill();
-    ctx.strokeStyle = centerBorderColor; // Chegara rangi
+    ctx.strokeStyle = centerBorderColor;
     ctx.lineWidth = 4;
     ctx.stroke();
 
-    // Markazdagi logo
-    const logo = new Image();
-    logo.src = "./icons/logo.svg"; // Logoning havolasi
-    logo.onload = () => {
-        const logoWidth = 104; // Logoning kengligi
-        const logoHeight = 15; // Logoning balandligi
+    // Logoni chizish
+    if (isLogoLoaded) {
+        const logoWidth = 150; // Logoning kengligi
+        const logoHeight = 35; // Logoning balandligi
 
-        // Markazda joylash
         ctx.drawImage(
             logo,
             centerX - logoWidth / 2,
@@ -116,11 +122,8 @@ function drawCenter() {
             logoWidth,
             logoHeight
         );
-    };
-
-
+    }
 }
-
 
 // To'liq chizma funksiyasi
 function draw() {
