@@ -13,7 +13,7 @@ const innerRadius = 90; // Markaziy aylana radiusi
 
 // Bo'laklar va ularning ma'lumotlari
 const sections = [
-    { text: "Док для приход", icon: "./icons/navigation/приход.svg", link: "./док-приход.html" },
+    { text: "Док для приход", icon: "./icons/navigation/приход.svg", link: null },
     { text: "Касса", icon: "./icons/navigation/касса.svg", link: "./касса.html" },
     { text: "Отчеты", icon: "./icons/navigation/oтчеты.svg", link: "./oтчеты.html" },
     { text: "Сервис", icon: "./icons/navigation/cервис.svg", link: "./сервис .html" },
