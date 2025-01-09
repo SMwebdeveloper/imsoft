@@ -220,7 +220,7 @@ ul li:nth-child(6) a div {
 ul .close {
   width: 218px;
   height: 218px;
-  background: white;
+  background: var(--color-light);
   border: 6px solid var(--border-color);
   border-radius: 50%;
   position: absolute;
